@@ -35,10 +35,10 @@
             <!-- Halaman Utama -->
             <div id="view-home" class="view">
                 <div class="mode-selector">
-                    <button class="mode-btn active" onclick="setMode('Semua')">Semua</button>
-                    <button class="mode-btn" onclick="setMode('Pasangan')">Pasangan</button>
-                    <button class="mode-btn" onclick="setMode('Kawan')">Kawan</button>
-                    <button class="mode-btn" onclick="setMode('Deep')">Deep</button>
+                    <button class="mode-btn active" onclick="setMode('Semua', this)">Semua</button>  <!-- TAMBAH this -->
+                    <button class="mode-btn" onclick="setMode('Pasangan', this)">Pasangan</button>  <!-- TAMBAH this -->
+                    <button class="mode-btn" onclick="setMode('Kawan', this)">Kawan</button>  <!-- TAMBAH this -->
+                    <button class="mode-btn" onclick="setMode('Deep', this)">Deep</button>  <!-- TAMBAH this -->
                 </div>
 
                 <div class="card-container" onclick="handleCardClick()">
