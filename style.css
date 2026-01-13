@@ -17,12 +17,22 @@ body {
     color: var(--text-main);
     font-family: 'Inter', -apple-system, sans-serif;
     overflow-x: hidden;
+    min-height: 100vh; /* Wajib ada */
+    display: flex; /* Guna flexbox */
+    justify-content: center; /* Center mendatar */
+    align-items: center;    /* Center menegak */
+    overflow-x: hidden;
+    padding: 20px;
 }
 
 /* Navigation */
 .navbar {
     position: fixed;
     top: 0; width: 100%;
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 100%;
+    max-width: 500px;
     padding: 1rem 1.5rem;
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(10px);
@@ -68,6 +78,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .view { width: 100%; }
@@ -102,7 +113,8 @@ body {
 /* Card Animation */
 .card-container {
     perspective: 1000px;
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 450px;
     cursor: pointer;
 }
@@ -191,5 +203,6 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 
 footer { margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 10px; letter-spacing: 2px; }
