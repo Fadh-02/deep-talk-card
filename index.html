@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepTalk - Edisi Bahasa Melayu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="navbar">
+            <div class="nav-logo" onclick="changeView('home')">
+                <div class="logo-icon">
+                    <i data-lucide="message-circle"></i>
+                </div>
+                <span class="logo-text">DeepTalk</span>
+            </div>
+            <div class="nav-actions">
+                <button onclick="changeView('favorites')" id="fav-nav-btn" class="nav-btn">
+                    <i data-lucide="star"></i>
+                </button>
+                <button onclick="changeView('history')" id="hist-nav-btn" class="nav-btn">
+                    <i data-lucide="history"></i>
+                </button>
+            </div>
+        </nav>
+
+        <main class="content">
+            <section id="view-home" class="view">
+                <div class="mode-selector" id="mode-buttons">
+                    <button class="mode-btn active" onclick="setMode('Semua')">Semua</button>
+                    <button class="mode-btn" onclick="setMode('Pasangan')">Pasangan</button>
+                    <button class="mode-btn" onclick="setMode('Kawan')">Kawan</button>
+                    <button class="mode-btn" onclick="setMode('Deep')">Deep</button>
+                </div>
+
+                <div class="card-container">
+                    <div class="card-inner" id="main-card" onclick="handleCardClick()">
+                        <div class="card-front">
+                            <div class="category-badge" id="card-badge">
+                                <i id="badge-icon" data-lucide="sparkles"></i>
+                                <span id="badge-text">CATEGORY</span>
+                            </div>
+                            <div class="coffee-icon">
+                                <i data-lucide="coffee"></i>
+                            </div>
+                            <h2 class="question-text" id="display-question">"Sesuatu yang hebat bermula dari satu soalan jujur."</h2>
+                            <div class="card-footer">
+                                <button class="fav-toggle-btn" onclick="toggleFavorite(event)">
+                                    <i data-lucide="star" id="star-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="moon-circle">
+                                <i data-lucide="moon"></i>
+                            </div>
+                            <h3>Deep Talk</h3>
+                            <p class="quote">"Sesuatu yang hebat bermula dari satu soalan jujur."</p>
+                            <button class="draw-btn">Cabut Kad</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="next-btn" class="next-btn hidden" onclick="drawCard()">
+                    <i data-lucide="refresh-cw" id="refresh-icon"></i>
+                    Soalan Seterusnya
+                </button>
+            </section>
+
+            <section id="view-favorites" class="view hidden">
+                <h2 class="section-title"><i data-lucide="star" class="text-yellow"></i> Kegemaran</h2>
+                <div id="favorites-list" class="list-container">
+                    </div>
+            </section>
+
+            <section id="view-history" class="view hidden">
+                <h2 class="section-title"><i data-lucide="history" class="text-indigo"></i> Sejarah Kad</h2>
+                <div id="history-list" class="list-container">
+                    </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>EDISI BAHASA MELAYU • 2024</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
