@@ -3,90 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepTalk - Edisi Bahasa Melayu</title>
+    <title>Deep Talk Card - Versi Pro</title>
+    
+    <!-- Memanggil Fail CSS Luaran -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Memanggil Library Ikon Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+
     <div class="app-container">
+        <!-- Navigasi Atas -->
         <nav class="navbar">
             <div class="nav-logo" onclick="changeView('home')">
                 <div class="logo-icon">
-                    <i data-lucide="message-circle"></i>
+                    <i data-lucide="message-circle" style="color: white;"></i>
                 </div>
-                <span class="logo-text">DeepTalk</span>
+                <span style="font-weight: bold; letter-spacing: -0.5px;">DeepTalk</span>
             </div>
-            <div class="nav-actions">
-                <button onclick="changeView('favorites')" id="fav-nav-btn" class="nav-btn">
+            <div style="display: flex; gap: 10px;">
+                <button class="nav-btn" onclick="changeView('favorites')">
                     <i data-lucide="star"></i>
                 </button>
-                <button onclick="changeView('history')" id="hist-nav-btn" class="nav-btn">
+                <button class="nav-btn" onclick="changeView('history')">
                     <i data-lucide="history"></i>
                 </button>
             </div>
         </nav>
 
         <main class="content">
-            <section id="view-home" class="view">
-                <div class="mode-selector" id="mode-buttons">
+            <!-- Halaman Utama -->
+            <div id="view-home" class="view">
+                <div class="mode-selector">
                     <button class="mode-btn active" onclick="setMode('Semua')">Semua</button>
                     <button class="mode-btn" onclick="setMode('Pasangan')">Pasangan</button>
                     <button class="mode-btn" onclick="setMode('Kawan')">Kawan</button>
                     <button class="mode-btn" onclick="setMode('Deep')">Deep</button>
                 </div>
 
-                <div class="card-container">
-                    <div class="card-inner" id="main-card" onclick="handleCardClick()">
-                        <div class="card-front">
-                            <div class="category-badge" id="card-badge">
-                                <i id="badge-icon" data-lucide="sparkles"></i>
-                                <span id="badge-text">CATEGORY</span>
-                            </div>
-                            <div class="coffee-icon">
-                                <i data-lucide="coffee"></i>
-                            </div>
-                            <h2 class="question-text" id="display-question">"Sesuatu yang hebat bermula dari satu soalan jujur."</h2>
-                            <div class="card-footer">
-                                <button class="fav-toggle-btn" onclick="toggleFavorite(event)">
-                                    <i data-lucide="star" id="star-icon"></i>
-                                </button>
-                            </div>
-                        </div>
+                <div class="card-container" onclick="handleCardClick()">
+                    <div class="card-inner" id="main-card">
+                        <!-- Muka Belakang (Halaman Mula) -->
                         <div class="card-back">
-                            <div class="moon-circle">
-                                <i data-lucide="moon"></i>
+                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 50%; margin-bottom: 20px;">
+                                <i data-lucide="moon" size="32" style="color: white;"></i>
                             </div>
-                            <h3>Deep Talk</h3>
-                            <p class="quote">"Sesuatu yang hebat bermula dari satu soalan jujur."</p>
-                            <button class="draw-btn">Cabut Kad</button>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Deep Talk</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.7; font-style: italic;">"Sesuatu yang hebat bermula dari satu soalan yang jujur."</p>
+                        </div>
+
+                        <!-- Muka Depan (Soalan) -->
+                        <div class="card-front">
+                            <div id="card-badge" class="category-badge">
+                                <span id="badge-text">DEEP</span>
+                            </div>
+                            <p id="display-question" class="question-text">Klik untuk cabut kad...</p>
+                            <button class="favorite-btn" onclick="toggleFavorite(event)" style="background:none; border:none; cursor:pointer;">
+                                <i id="star-icon" data-lucide="star"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <button id="next-btn" class="next-btn hidden" onclick="drawCard()">
-                    <i data-lucide="refresh-cw" id="refresh-icon"></i>
+                    <i id="refresh-icon" data-lucide="refresh-cw"></i>
                     Soalan Seterusnya
                 </button>
-            </section>
+            </div>
 
-            <section id="view-favorites" class="view hidden">
-                <h2 class="section-title"><i data-lucide="star" class="text-yellow"></i> Kegemaran</h2>
-                <div id="favorites-list" class="list-container">
-                    </div>
-            </section>
+            <!-- Halaman Kegemaran -->
+            <div id="view-favorites" class="view hidden" style="width: 100%; max-width: 400px; padding: 20px;">
+                <h2 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="star" style="color: #facc15; fill: #facc15;"></i> Kegemaran
+                </h2>
+                <div id="favorites-list"></div>
+            </div>
 
-            <section id="view-history" class="view hidden">
-                <h2 class="section-title"><i data-lucide="history" class="text-indigo"></i> Sejarah Kad</h2>
-                <div id="history-list" class="list-container">
-                    </div>
-            </section>
+            <!-- Halaman Sejarah -->
+            <div id="view-history" class="view hidden" style="width: 100%; max-width: 400px; padding: 20px;">
+                <h2 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="history" style="color: #4f46e5;"></i> Sejarah
+                </h2>
+                <div id="history-list"></div>
+            </div>
         </main>
 
         <footer>
-            <p>EDISI BAHASA MELAYU • 2024</p>
+            <p>FADH-02 @ 2024</p>
         </footer>
     </div>
 
+    <!-- Memanggil Fail JS Luaran (Letak di bawah supaya HTML load dulu) -->
     <script src="script.js"></script>
 </body>
 </html>
